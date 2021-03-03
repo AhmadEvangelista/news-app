@@ -1,7 +1,8 @@
 import './App.css';
 import axios from 'axios';
-import React, {useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import NewsList from './components/newsList.component';
+import API_KEY from './config';
 
 const App = () => {
   const [article, setArticle] = useState([]);
@@ -12,9 +13,7 @@ const App = () => {
 
   const getArticles = () => {
     axios
-      .get(
-        'https://newsapi.org/v2/everything?q=keyword&apiKey=21774842674a4892ad9155b1ee416ad2'
-      )
+      .get(`https://newsapi.org/v2/everything?q=keyword&apiKey=${API_KEY}`)
       .then((res) => {
         const articles = res.data.articles;
         setArticle(articles);
